@@ -13,3 +13,19 @@ const removeElement = (nums: number[], val: number): number => {
 
   return slow;
 };
+
+const removeElement2 = (nums: number[], val: number): number => {
+  let head = 0;
+  let end = nums.length - 1;
+
+  while (head <= end) {
+    if (nums[head] === val) {
+      nums[head] = nums[end--];
+      continue;
+    }
+
+    head++;
+  }
+
+  return head;
+};
