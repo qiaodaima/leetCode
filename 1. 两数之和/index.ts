@@ -11,3 +11,20 @@ const twoSum = (nums: number[], target: number): number[] | void => {
     }
   }
 };
+
+const twoSum1 = (nums: number[], target: number): number[] | void => {
+  const map = new Map();
+
+  for (let i = 0; i < nums.length; i++) {
+    map.set(nums[i], i);
+  }
+
+  for (let i = 0; i < nums.length; i++) {
+    const find = target - nums[i];
+    const result = map.has(find) ? map.get(find) : -1;
+
+    if (result >= 0 && result !== i) {
+      return [i, result];
+    }
+  }
+};
