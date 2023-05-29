@@ -8,33 +8,17 @@ const merge = (nums1: number[], m: number, nums2: number[], n: number): void => 
   let p2 = n - 1;
   let currIndex = m + n - 1;
 
-  while (p1 >= 0 && p2 >= 0) {
-    if (nums1[p1] >= nums2[p2]) {
+  while (p1 >= 0 || p2 >= 0) {
+    if (nums1[p1] >= nums2[p2] || p2 < 0) {
       nums1[currIndex] = nums1[p1];
       currIndex--;
       p1--;
     }
 
-    if (nums1[p1] < nums2[p2]) {
+    if (nums1[p1] < nums2[p2] || p1 < 0) {
       nums1[currIndex] = nums2[p2];
       currIndex--;
       p2--;
-    }
-  }
-
-  if (p1 < 0) {
-    while (p2 >= 0) {
-      nums1[currIndex] = nums2[p2];
-      currIndex--;
-      p2--;
-    }
-  }
-
-  if (p2 < 0) {
-    while (p1 >= 0) {
-      nums1[currIndex] = nums1[p1];
-      currIndex--;
-      p1--;
     }
   }
 };
